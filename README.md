@@ -6,7 +6,8 @@ Built for **WSTI Festi 2026 — City Challenge 2: Better Community Events and Pu
 
 ## What's here
 
-The landing page for the challenge submission. Open `index.html` in a browser to view the page.
+The landing page for the challenge submission. View the page here: https://eraj-basheer.github.io/parramatta-explorer-landing-page/ 
+Or download and open `index.html` in a browser to view the page.
 
 
 ## Live prototype
