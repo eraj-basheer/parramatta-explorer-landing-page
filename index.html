@@ -12,156 +12,266 @@
 <style>
   :root {
     --brand: #034f84;
+    --brand-2: #0b6aa8;
     --sky: #92a8d1;
     --mist: #E6ECF6;
     --accent: #c94c4c;
     --sun: #FFC93C;
+    --mint: #8FE3C2;
+    --lav: #CFC2F7;
   }
   * { box-sizing: border-box; }
   body { margin: 0; background: #FFFFFF; color: var(--brand); font-family: 'Inter', system-ui, sans-serif; line-height: 1.6; }
   a { color: inherit; }
-  h1, h2 { font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.02em; }
-  .wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; }
-  section { padding: 56px 0; border-top: 1px solid var(--mist); }
+  h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.02em; }
+  .wrap { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
   .eyebrow { margin: 0 0 12px; font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
   h2 { margin: 0 0 18px; font-size: clamp(24px, 3.4vw, 34px); line-height: 1.15; }
   p { margin: 0 0 14px; font-size: 17px; }
   ul { margin: 0; padding-left: 22px; }
   li { font-size: 17px; margin-bottom: 6px; }
   .lead { font-size: 19px; }
-  .muted { color: #3d6d94; }
-  .btn { display: inline-block; background: var(--accent); color: #FFFFFF; padding: 14px 26px; border-radius: 999px; font-weight: 700; font-size: 17px; text-decoration: none; transition: filter 0.15s ease, transform 0.15s ease; }
+  .btn { display: inline-block; background: var(--accent); color: #FFFFFF; padding: 15px 28px; border-radius: 999px; font-weight: 700; font-size: 17px; text-decoration: none; transition: filter 0.15s ease, transform 0.15s ease; }
   .btn:hover { filter: brightness(0.95); transform: translateY(-2px); }
   .btn:focus-visible, a:focus-visible { outline: 3px solid var(--mist); outline-offset: 3px; box-shadow: 0 0 0 6px var(--brand); }
-  blockquote { margin: 0 0 16px; padding: 18px 22px; background: var(--mist); border-left: 5px solid var(--accent); border-radius: 0 12px 12px 0; }
-  blockquote p { margin: 0 0 6px; font-size: 18px; }
+  .lift { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+  .lift:hover { transform: translateY(-6px); box-shadow: 0 14px 28px rgba(3,79,132,0.18); }
+  .card { background: #FFFFFF; border-radius: 18px; padding: 26px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+  blockquote { margin: 0; padding: 22px 24px; background: #FFFFFF; border-left: 6px solid var(--accent); border-radius: 0 16px 16px 0; }
+  blockquote p { margin: 0 0 8px; font-size: 18px; }
   blockquote footer { font-size: 14px; font-weight: 600; }
-  .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px 32px; }
-  footer { background: var(--mist); padding: 36px 0; font-size: 14px; }
+  footer { background: var(--mist); }
   footer p { font-size: 14px; }
-  @media (prefers-reduced-motion: reduce) { .btn { transition: none; } }
+  @media (prefers-reduced-motion: reduce) { .btn, .lift { transition: none; } }
 </style>
 </head>
 <body>
 
-<!-- HERO -->
-<header style="background: var(--brand); color: #FFFFFF; padding: 72px 0 60px">
-  <div class="wrap">
+<!-- ================= HERO ================= -->
+<section id="top" style="background: var(--brand); color: #FFFFFF; position: relative; overflow: hidden">
+
+  <!-- bunting -->
+  <svg aria-hidden="true" width="100%" height="46" style="position: absolute; top: 0; left: 0; z-index: 1; display: block">
+    <defs>
+      <pattern id="flags" x="0" y="0" width="360" height="46" patternUnits="userSpaceOnUse">
+        <path d="M0 6 H360" stroke="#92a8d1" stroke-width="2" fill="none"></path>
+        <polygon points="12,6 60,6 36,42" fill="#c94c4c"></polygon>
+        <polygon points="84,6 132,6 108,42" fill="#FFC93C"></polygon>
+        <polygon points="156,6 204,6 180,42" fill="#8FE3C2"></polygon>
+        <polygon points="228,6 276,6 252,42" fill="#CFC2F7"></polygon>
+        <polygon points="300,6 348,6 324,42" fill="#E6ECF6"></polygon>
+      </pattern>
+    </defs>
+    <rect x="0" y="0" width="100%" height="46" fill="url(#flags)"></rect>
+  </svg>
+
+  <!-- confetti -->
+  <div aria-hidden="true" style="position: absolute; top: 26%; left: 5%; width: 16px; height: 16px; border-radius: 50%; background: #FFC93C; z-index: 1"></div>
+  <div aria-hidden="true" style="position: absolute; top: 52%; left: 3%; width: 12px; height: 12px; border-radius: 3px; background: #8FE3C2; transform: rotate(20deg); z-index: 1"></div>
+  <div aria-hidden="true" style="position: absolute; top: 20%; right: 6%; width: 18px; height: 18px; border-radius: 50%; background: #8FE3C2; z-index: 1"></div>
+  <div aria-hidden="true" style="position: absolute; top: 58%; right: 4%; z-index: 1"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="#FFC93C" stroke-width="4" stroke-linecap="round"><path d="M13 3v20M3 13h20"></path></svg></div>
+
+  <div class="wrap" style="padding-top: 78px; padding-bottom: 150px; position: relative; z-index: 2">
     <p class="eyebrow" style="color: var(--sun)">WSTI Festi 2026 · City Challenge 2</p>
     <h1 style="margin: 0 0 18px; font-size: clamp(34px, 5.4vw, 52px); line-height: 1.1">Parramatta Explorer</h1>
-    <p class="lead" style="max-width: 720px">An accessible plan for every City of Parramatta event, so you know you can get in <strong>before</strong> you leave home.</p>
+    <p class="lead" style="max-width: 720px">An accessible plan for every City of Parramatta event, so you know you can get in <span style="background: var(--accent); color: #FFFFFF; padding: 0 12px; border-radius: 12px; -webkit-box-decoration-break: clone; box-decoration-break: clone">before</span> you leave home.</p>
     <p style="max-width: 720px; color: var(--mist)">For people with disability, older residents and families, deciding whether to go to an event usually means guessing whether they can actually get in, move around and take part.</p>
     <p style="max-width: 720px; color: var(--mist)">That affects wheelchair users and people with mobility needs, people who are blind or have low vision, Deaf and hard-of-hearing people, autistic and sensory-sensitive people, older residents, carers and families, and culturally diverse communities.</p>
-    <p style="margin: 26px 0 10px"><a class="btn" href="https://parramatta-explore.vercel.app">Open the prototype</a></p>
+    <p style="margin: 26px 0 12px"><a class="btn" href="https://parramatta-explore.vercel.app">Open the prototype</a></p>
     <p style="margin: 0; font-size: 14px; color: var(--mist)">A prototype by Idhika Vaidya &amp; Eraj Basheer. Not affiliated with or endorsed by the City of Parramatta.</p>
   </div>
-</header>
 
-<div class="wrap">
+  <!-- night skyline, river and ferry -->
+  <svg viewBox="0 0 1440 220" preserveAspectRatio="xMidYMax slice" aria-hidden="true" style="position: absolute; left: 0; bottom: -1px; width: 100%; height: 220px; display: block; z-index: 1">
+    <defs>
+      <pattern id="win" x="0" y="0" width="16" height="20" patternUnits="userSpaceOnUse">
+        <rect x="5" y="6" width="6" height="8" fill="#FFC93C" opacity="0.9"></rect>
+      </pattern>
+      <g id="bld">
+        <rect x="0" y="90" width="90" height="70"></rect>
+        <rect x="95" y="50" width="60" height="110"></rect>
+        <rect x="160" y="75" width="80" height="85"></rect>
+        <rect x="245" y="30" width="55" height="130"></rect>
+        <rect x="305" y="65" width="95" height="95"></rect>
+        <rect x="405" y="10" width="60" height="150"></rect>
+        <rect x="470" y="60" width="85" height="100"></rect>
+        <rect x="560" y="35" width="50" height="125"></rect>
+        <rect x="615" y="80" width="90" height="80"></rect>
+        <rect x="710" y="45" width="60" height="115"></rect>
+        <rect x="775" y="65" width="80" height="95"></rect>
+        <rect x="860" y="20" width="55" height="140"></rect>
+        <rect x="920" y="75" width="90" height="85"></rect>
+        <rect x="1015" y="40" width="65" height="120"></rect>
+        <rect x="1085" y="60" width="85" height="100"></rect>
+        <rect x="1175" y="25" width="55" height="135"></rect>
+        <rect x="1235" y="70" width="95" height="90"></rect>
+        <rect x="1335" y="50" width="50" height="110"></rect>
+        <rect x="1390" y="80" width="60" height="80"></rect>
+      </g>
+    </defs>
+    <use href="#bld" fill="#0b6aa8"></use>
+    <use href="#bld" fill="url(#win)"></use>
+    <rect x="0" y="160" width="1440" height="60" fill="#92a8d1"></rect>
+    <g fill="none" stroke="#E6ECF6" stroke-width="2" stroke-linecap="round" opacity="0.8">
+      <path d="M120 172 h40 M300 176 h30 M520 170 h44 M760 174 h36 M1180 172 h40 M1320 176 h30"></path>
+    </g>
+    <g transform="translate(980,148)">
+      <rect x="14" y="-12" width="10" height="12" fill="#FFC93C"></rect>
+      <rect x="0" y="0" width="76" height="20" rx="3" fill="#FFFFFF"></rect>
+      <rect x="8" y="5" width="10" height="8" fill="#034f84"></rect>
+      <rect x="24" y="5" width="10" height="8" fill="#034f84"></rect>
+      <rect x="40" y="5" width="10" height="8" fill="#034f84"></rect>
+      <rect x="56" y="5" width="10" height="8" fill="#034f84"></rect>
+      <path d="M-8 20 H84 L72 34 H4 Z" fill="#c94c4c"></path>
+    </g>
+    <path d="M0 190 C 240 170, 480 210, 720 190 S 1200 170, 1440 190" fill="none" stroke="#c94c4c" stroke-width="2"></path>
+    <path d="M0 198 C 240 178, 480 218, 720 198 S 1200 178, 1440 198 L1440 220 L0 220 Z" fill="#E6ECF6"></path>
+  </svg>
+</section>
 
-  <!-- COMMUNITY BENEFIT -->
-  <section style="border-top: 0">
+<!-- ================= COMMUNITY BENEFIT ================= -->
+<section style="background: var(--mist)">
+  <div class="wrap" style="padding: 72px 24px">
     <p class="eyebrow">Community benefit</p>
     <h2>Fewer wasted trips, more confidence — and a record Council can act on.</h2>
-    <p>If people can trust the information before they travel, more of them turn up. If Council can see the gaps, it can fix them for the next event.</p>
-    <p style="margin-bottom: 8px"><strong>How we'll measure it:</strong></p>
-    <ul>
-      <li>the share of events with a verified access plan</li>
-      <li>the number of "unknown" access fields closed over time</li>
-      <li>post-event feedback on whether people could navigate, participate and enjoy the event — not just whether they attended</li>
-    </ul>
-  </section>
+    <p style="max-width: 780px">If people can trust the information before they travel, more of them turn up. If Council can see the gaps, it can fix them for the next event.</p>
+    <div class="grid" style="margin: 22px 0">
+      <div class="lift" style="background: var(--sun); color: var(--brand); border-radius: 20px; padding: 22px"><div style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 40px; line-height: 1">%</div><div style="font-size: 15px; font-weight: 600; margin-top: 6px">of events with a verified access plan</div></div>
+      <div class="lift" style="background: var(--mint); color: var(--brand); border-radius: 20px; padding: 22px"><div style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 40px; line-height: 1">#</div><div style="font-size: 15px; font-weight: 600; margin-top: 6px">of "unknown" access fields we close over time</div></div>
+      <div class="lift" style="background: var(--lav); color: var(--brand); border-radius: 20px; padding: 22px"><div style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 40px; line-height: 1">✓</div><div style="font-size: 15px; font-weight: 600; margin-top: 6px">post-event feedback on whether people could navigate, participate and enjoy the event</div></div>
+    </div>
+    <p style="margin: 0; font-size: 15px">How we'll measure it: verified-plan coverage per event, the rate we close unknown fields, and the trend in community feedback — not just attendance.</p>
+  </div>
+</section>
 
-  <!-- TEAM -->
-  <section>
+<!-- ================= TEAM ================= -->
+<section style="background: #FFFFFF">
+  <div class="wrap" style="padding: 72px 24px">
     <p class="eyebrow">Team</p>
     <h2>Who built it</h2>
-    <ul>
-      <li><strong>Idhika Vaidya</strong> — data scientist, lives in Parramatta.</li>
-      <li><strong>Eraj Basheer</strong> — computer science and cybersecurity.</li>
-    </ul>
-  </section>
+    <div class="grid">
+      <div class="lift card" style="border: 1px solid var(--mist); border-left: 6px solid var(--brand)"><h3 style="margin: 0 0 6px; font-size: 19px">Idhika Vaidya</h3><p style="margin: 0; font-size: 16px">Data scientist — lives in Parramatta.</p></div>
+      <div class="lift card" style="border: 1px solid var(--mist); border-left: 6px solid var(--accent)"><h3 style="margin: 0 0 6px; font-size: 19px">Eraj Basheer</h3><p style="margin: 0; font-size: 16px">Computer science and cybersecurity.</p></div>
+    </div>
+  </div>
+</section>
 
-  <!-- TESTER FEEDBACK -->
-  <section>
+<!-- ================= TESTER FEEDBACK ================= -->
+<section style="background: var(--sky)">
+  <div class="wrap" style="padding: 72px 24px">
     <p class="eyebrow">What testers told us</p>
     <h2>We tested with people at PHIVE in Parramatta.</h2>
-    <p>The event page felt too word-heavy, so access details are now collapsed behind a "more details" button.</p>
-    <blockquote>
-      <p>"I'd actually use this. I normally ring ahead or just risk it — having the door widths and step-free routes in one place would take the worry out of it."</p>
-      <footer>Wheelchair user, Parramatta</footer>
-    </blockquote>
-    <blockquote>
-      <p>"The public forum is the part I like most. You can see what other people have flagged in real time, so the information keeps getting better instead of going stale."</p>
-      <footer>Carer, Parramatta</footer>
-    </blockquote>
-  </section>
+    <p style="max-width: 780px">The event page felt too word-heavy, so access details are now collapsed behind a "more details" button.</p>
+    <div class="grid" style="margin-top: 10px">
+      <blockquote class="lift">
+        <p>"I'd actually use this. I normally ring ahead or just risk it — having the door widths and step-free routes in one place would take the worry out of it."</p>
+        <footer>Wheelchair user, Parramatta</footer>
+      </blockquote>
+      <blockquote class="lift" style="border-left-color: var(--brand)">
+        <p>"The public forum is the part I like most. You can see what other people have flagged in real time, so the information keeps getting better instead of going stale."</p>
+        <footer>Carer, Parramatta</footer>
+      </blockquote>
+    </div>
+  </div>
+</section>
 
-  <!-- DATA -->
-  <section>
+<!-- ================= DATA ================= -->
+<section style="background: #FFFFFF">
+  <div class="wrap" style="padding: 72px 24px">
     <p class="eyebrow">Data &amp; sources</p>
     <h2>Where the information comes from</h2>
     <p>Everything is attributed, and nothing is presented as Council's own operational data.</p>
-    <ul>
-      <li><strong>OpenStreetMap</strong> accessibility tags (ODbL) — candidate venue access attributes</li>
-      <li><strong>Transport for NSW Open Data</strong> — accessible stops and journey context</li>
-      <li><strong>City of Parramatta event listings</strong> — event name, date, venue, public description</li>
-      <li><strong>Major Events and Festivals Strategy 2025–2030</strong> — community engagement facts and event context</li>
-      <li><strong>Council strategy &amp; policy documents</strong> — Disability Inclusion Action Plan, Social Sustainability Strategy, Smart City and Innovation Strategy</li>
-      <li><strong>Clearly-labelled synthetic data</strong> — attendance and resource scenarios (not real Council data)</li>
-      <li><strong>MapLibre + OpenStreetMap tiles</strong> — base map, via OpenFreeMap</li>
-    </ul>
-  </section>
+    <div class="grid">
+      <div class="lift" style="background: var(--mist); border-radius: 16px; padding: 22px"><h3 style="margin: 0 0 6px; font-size: 17px">OpenStreetMap accessibility tags</h3><p style="margin: 0; font-size: 15px">Candidate venue access attributes. Licence: ODbL.</p></div>
+      <div class="lift" style="background: var(--mist); border-radius: 16px; padding: 22px"><h3 style="margin: 0 0 6px; font-size: 17px">Transport for NSW Open Data</h3><p style="margin: 0; font-size: 15px">Accessible stops and journey context.</p></div>
+      <div class="lift" style="background: var(--mist); border-radius: 16px; padding: 22px"><h3 style="margin: 0 0 6px; font-size: 17px">City of Parramatta event listings</h3><p style="margin: 0; font-size: 15px">Event name, date, venue and public description.</p></div>
+      <div class="lift" style="background: var(--mist); border-radius: 16px; padding: 22px"><h3 style="margin: 0 0 6px; font-size: 17px">Major Events and Festivals Strategy 2025–2030</h3><p style="margin: 0; font-size: 15px">Community engagement facts and event context.</p></div>
+      <div class="lift" style="background: var(--mist); border-radius: 16px; padding: 22px"><h3 style="margin: 0 0 6px; font-size: 17px">Council strategy &amp; policy documents</h3><p style="margin: 0; font-size: 15px">Disability Inclusion Action Plan, Social Sustainability Strategy, Smart City and Innovation Strategy.</p></div>
+      <div class="lift" style="background: var(--mist); border-radius: 16px; padding: 22px"><h3 style="margin: 0 0 6px; font-size: 17px">Clearly-labelled synthetic data</h3><p style="margin: 0; font-size: 15px">Attendance and resource scenarios. Not real Council data.</p></div>
+      <div class="lift" style="background: var(--mist); border-radius: 16px; padding: 22px"><h3 style="margin: 0 0 6px; font-size: 17px">MapLibre + OpenStreetMap tiles</h3><p style="margin: 0; font-size: 15px">Base map for the access plan, via OpenFreeMap.</p></div>
+    </div>
+  </div>
+</section>
 
-  <!-- PRIVACY + RESPONSIBLE AI -->
-  <section>
-    <p class="eyebrow">Privacy &amp; responsible AI</p>
+<!-- ================= PRIVACY + RESPONSIBLE AI ================= -->
+<section style="background: var(--brand); color: #FFFFFF">
+  <div class="wrap" style="padding: 72px 24px">
+    <p class="eyebrow" style="color: var(--sun)">Privacy &amp; responsible AI</p>
     <h2>AI helps — but a person always decides</h2>
-    <p><strong>Privacy:</strong> no accounts for attendees, no health information collected. The needs you choose stay on your device and are never sent to a server.</p>
-    <p><strong>Tools we used:</strong> OpenAI to build the website, and ChatGPT for the HTML design and colour scheme.</p>
-    <p><strong>Human check:</strong> AI only suggests an access attribute or a risk. Nothing is published until a person confirms it, and each item shows its source and when it was last checked.</p>
-    <p><strong>Risks we manage:</strong> stale or incomplete data, over-trust in AI suggestions, and exclusion when data is missing — handled by showing provenance and openly showing what we don't know.</p>
-  </section>
+    <div class="grid">
+      <div style="background: rgba(255,255,255,0.1); border-radius: 18px; padding: 24px"><h3 style="margin: 0 0 8px; font-size: 19px">Privacy</h3><p style="margin: 0; font-size: 15px; color: var(--mist)">No accounts for attendees, no health information collected. The needs you choose stay on your device and are never sent to a server.</p></div>
+      <div style="background: rgba(255,255,255,0.1); border-radius: 18px; padding: 24px"><h3 style="margin: 0 0 8px; font-size: 19px">Tools we used</h3><p style="margin: 0; font-size: 15px; color: var(--mist)">OpenAI to build the website, and ChatGPT for the HTML design and colour scheme.</p></div>
+      <div style="background: rgba(255,255,255,0.1); border-radius: 18px; padding: 24px"><h3 style="margin: 0 0 8px; font-size: 19px">Human check</h3><p style="margin: 0; font-size: 15px; color: var(--mist)">AI only suggests an access attribute or a risk. Nothing is published until a person confirms it, and each item shows its source and when it was last checked.</p></div>
+      <div style="background: rgba(255,255,255,0.1); border-radius: 18px; padding: 24px"><h3 style="margin: 0 0 8px; font-size: 19px">Risks we manage</h3><p style="margin: 0; font-size: 15px; color: var(--mist)">Stale or incomplete data, over-trust in AI suggestions, and exclusion when data is missing — handled by showing provenance and openly showing what we don't know.</p></div>
+    </div>
+  </div>
+</section>
 
-  <!-- PROTOTYPE -->
-  <section>
-    <p class="eyebrow">Working prototype</p>
-    <h2>Try it now</h2>
-    <p>Search a real Parramatta event, choose your needs, and walk through the access plan — before, during and after.</p>
-    <p style="margin: 18px 0 0"><a class="btn" href="https://parramatta-explore.vercel.app">parramatta-explore.vercel.app</a></p>
-  </section>
+<!-- ================= PROTOTYPE ================= -->
+<section style="background: var(--sun)">
+  <div class="wrap" style="padding: 64px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 26px">
+    <div style="flex: 1 1 420px; min-width: 0">
+      <p class="eyebrow">Working prototype</p>
+      <h2 style="margin: 0 0 10px">Try it now</h2>
+      <p style="margin: 0; max-width: 560px">Search a real Parramatta event, choose your needs, and walk through the access plan — before, during and after.</p>
+    </div>
+    <a class="btn" href="https://parramatta-explore.vercel.app" style="background: var(--brand)">parramatta-explore.vercel.app</a>
+  </div>
+</section>
 
-  <!-- COUNCIL -->
-  <section>
-    <p class="eyebrow">Council's role</p>
-    <h2>We'd ask Council to partner and advocate</h2>
-    <p><strong>Partner:</strong> share event and venue information, and give us access to the spaces so the plan is accurate.</p>
-    <p><strong>Advocate:</strong> encourage venues, organisers and partners to publish accessible information and adopt the practice.</p>
-    <p>We're not asking Council to deliver or fund a new platform, or to regulate — a small, shared pilot is enough to prove the value.</p>
-    <p style="margin-bottom: 8px"><strong>It fits with Council's plans:</strong></p>
-    <ul>
-      <li>Major Events and Festivals Strategy 2025–2030 — Measurement &amp; Evaluation</li>
-      <li>Disability Inclusion Action Plan</li>
-      <li>Smart City and Innovation Strategy</li>
-      <li>Social Sustainability Strategy</li>
-    </ul>
-  </section>
+<!-- ================= COUNCIL ================= -->
+<section style="background: #FFFFFF">
+  <div class="wrap" style="padding: 72px 24px; display: flex; flex-wrap: wrap; gap: 32px">
+    <div style="flex: 1 1 440px; min-width: 0">
+      <p class="eyebrow">Council's role</p>
+      <h2>We'd ask Council to <span style="background: var(--lav); padding: 0 12px; border-radius: 12px">partner and advocate</span></h2>
+      <p><strong>Partner:</strong> share event and venue information, and give us access to the spaces so the plan is accurate.</p>
+      <p><strong>Advocate:</strong> encourage venues, organisers and partners to publish accessible information and adopt the practice.</p>
+      <p style="margin: 0">We're not asking Council to deliver or fund a new platform, or to regulate — a small, shared pilot is enough to prove the value.</p>
+    </div>
+    <div style="flex: 1 1 340px; min-width: 0; background: var(--mist); border-radius: 20px; padding: 28px">
+      <h3 style="margin: 0 0 14px; font-size: 19px">Fits with Council's plans</h3>
+      <ul>
+        <li>Major Events and Festivals Strategy 2025–2030 — Measurement &amp; Evaluation</li>
+        <li>Disability Inclusion Action Plan</li>
+        <li>Smart City and Innovation Strategy</li>
+        <li>Social Sustainability Strategy</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-  <!-- NEXT STEP -->
-  <section>
-    <p class="eyebrow">Next step</p>
-    <h2>A service-design pilot on one flagship event</h2>
-    <p>Work with Council's Events team on Parramatta Lanes: one event, one access plan, real feedback — then decide whether to scale it across the events calendar.</p>
-  </section>
+<!-- ================= NEXT STEP ================= -->
+<section style="background: var(--brand)">
+  <div class="wrap" style="padding: 72px 24px">
+    <div style="position: relative; overflow: hidden; background: #FFFFFF; color: var(--brand); border-radius: 28px; padding: 48px 40px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 26px">
+      <div aria-hidden="true" style="position: absolute; top: -34px; right: -34px; width: 90px; height: 90px; border-radius: 50%; background: var(--sun)"></div>
+      <div aria-hidden="true" style="position: absolute; bottom: -38px; left: -38px; width: 80px; height: 80px; border-radius: 50%; background: var(--lav)"></div>
+      <div style="position: relative; flex: 1 1 420px; min-width: 0">
+        <p class="eyebrow">Next step</p>
+        <h2 style="margin: 0 0 10px">A service-design pilot on one flagship event</h2>
+        <p style="margin: 0; max-width: 600px">Work with Council's Events team on Parramatta Lanes: one event, one access plan, real feedback — then decide whether to scale it across the events calendar.</p>
+      </div>
+      <a class="btn" href="https://parramatta-explore.vercel.app" style="position: relative">Open the prototype</a>
+    </div>
+  </div>
+</section>
 
-</div>
-
-<!-- FOOTER -->
+<!-- ================= FOOTER ================= -->
 <footer>
-  <div class="wrap">
+  <div aria-hidden="true" style="display: flex; height: 8px">
+    <div style="flex: 1; background: #c94c4c"></div>
+    <div style="flex: 1; background: #FFC93C"></div>
+    <div style="flex: 1; background: #8FE3C2"></div>
+    <div style="flex: 1; background: #CFC2F7"></div>
+    <div style="flex: 1; background: #92a8d1"></div>
+    <div style="flex: 1; background: #034f84"></div>
+  </div>
+  <div class="wrap" style="padding-top: 32px; padding-bottom: 40px">
     <p><strong>Parramatta Explorer</strong> — an independent student prototype for WSTI Festi 2026. Not affiliated with or endorsed by the City of Parramatta. Team: Idhika Vaidya &amp; Eraj Basheer.</p>
     <p>Parramatta Explorer acknowledges the Baramadagal clan of the Dharug Nation, the Traditional Owners of the land and waters of Parramatta, and pays respect to Elders past and present. Always was, always will be, Aboriginal land.</p>
-    <p class="muted" style="margin: 0">Community engagement facts and event context come from the City of Parramatta's Major Events and Festivals Strategy 2025–2030. Map data © OpenStreetMap contributors (ODbL). Prototype content is illustrative.</p>
+    <p style="margin: 0; color: #3d6d94">Community engagement facts and event context come from the City of Parramatta's Major Events and Festivals Strategy 2025–2030. Map data © OpenStreetMap contributors (ODbL). Prototype content is illustrative.</p>
   </div>
 </footer>
 
