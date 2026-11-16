@@ -6,7 +6,7 @@ Built for **WSTI Festi 2026 — City Challenge 2: Better Community Events and Pu
 
 ## What's here
 
-- `index.html` — The landing page for the Challenge Submission. Open `index.html` in a browser to view the page.
+- `index.html` — the landing page for the challenge submission. Open `index.html` in a browser to view the page.
 
 
 ## Live prototype
